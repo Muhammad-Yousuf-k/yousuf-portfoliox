@@ -1,5 +1,5 @@
 import React from "react";
-import SectionTop from "../../MUC/sectionTopHeading001";
+import SectionTop from "../../MUC/SectionTopHeading001";
 import TestimonialCard from "./TestimonialCard";
 
 const testimonialsData = [
@@ -33,7 +33,7 @@ const Testimonial = () => {
     return (
         <section
             id="testimonial"
-            className="flex flex-col justify-center items-center w-full py-20 bg-gray-50"
+            className="flex flex-col items-center justify-center w-full py-20 bg-gray-50"
         >
             <SectionTop name="Testimonials" />
 
@@ -42,7 +42,7 @@ const Testimonial = () => {
                 {testimonialsData.map((testimonial, idx) => (
                     <div
                         key={idx}
-                        className="flex-shrink-0 snap-center  "
+                        className="flex-shrink-0 snap-center "
                     >
                         <TestimonialCard {...testimonial} />
                     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SectionTop from '../../MUC/sectionTopHeading001'
+import SectionTop from '../../MUC/SectionTopHeading001'
 import ServiceCardRed from './ServiceCardRed'
 import ServiceCardBlack from './ServiceCardBlack'
 import serviceImages from "../../assets/scripts/renderImage";

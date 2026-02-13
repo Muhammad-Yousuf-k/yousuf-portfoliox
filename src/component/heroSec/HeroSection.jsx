@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import SectionLeft001 from "../../MUC/sectionLeft001";
+import SectionLeft001 from "../../MUC/SectionLeft001";
 import HeroRight from "./HeroRight";
 import { gsap } from "gsap";
 

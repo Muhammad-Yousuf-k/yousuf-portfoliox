@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import SectionLeft001 from '../../MUC/sectionLeft001';
+import SectionLeft001 from '../../MUC/SectionLeft001';
 import AboutRight from './AboutRight';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

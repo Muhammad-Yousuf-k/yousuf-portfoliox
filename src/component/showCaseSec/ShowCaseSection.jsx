@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SectionTop from '../../MUC/sectionTopHeading001'
+import SectionTop from '../../MUC/SectionTopHeading001'
 import ShowCaseBottom from './ShowCaseBottom'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

@@ -1,14 +1,24 @@
-import React, { Suspense, useState, useEffect } from 'react';
-import Navbar from './component/navbar';
-import HeroSection from './component/heroSec/heroSection';
+import React, { Suspense, useState, useEffect } from "react";
+import Navbar from "./component/Navbar";
+import HeroSection from "./component/heroSec/HeroSection";
 
-const Carusol = React.lazy(() => import('./component/carusol'));
-const AboutSection = React.lazy(() => import('./component/aboutSec/aboutSection'));
-const ServiceSection = React.lazy(() => import('./component/serviceSec/serviceSection'));
-const ShowCaseSection = React.lazy(() => import('./component/showCaseSec/showCaseSection'));
-const Testimonial = React.lazy(() => import('./component/testimonial/testimonial'));
-const ContactSection = React.lazy(() => import('./component/contactSec/contactSection'));
-const Footer = React.lazy(() => import('./component/footer'));
+const Carusol = React.lazy(() => import("./component/Carusol"));
+const AboutSection = React.lazy(
+  () => import("./component/aboutSec/AboutSection"),
+);
+const ServiceSection = React.lazy(
+  () => import("./component/serviceSec/ServiceSection"),
+);
+const ShowCaseSection = React.lazy(
+  () => import("./component/showCaseSec/ShowCaseSection"),
+);
+const Testimonial = React.lazy(
+  () => import("./component/testimonial/Testimonial"),
+);
+const ContactSection = React.lazy(
+  () => import("./component/contactSec/ContactSection"),
+);
+const Footer = React.lazy(() => import("./component/Footer"));
 
 const FullPageLoader = () => (
   <div
@@ -18,14 +28,17 @@ const FullPageLoader = () => (
     {/* Glowing spinner */}
     <div className="relative flex items-center justify-center">
       <div
-        className="absolute h-24 w-24 rounded-full opacity-20 animate-ping"
+        className="absolute w-24 h-24 rounded-full opacity-20 animate-ping"
         style={{
-          background: "radial-gradient(circle, var(--secondary) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, var(--secondary) 0%, transparent 70%)",
         }}
       ></div>
       <div
-        className="h-16 w-16 border-4 border-t-transparent rounded-full animate-spin"
-        style={{ borderColor: `var(--secondary) transparent var(--secondary) var(--secondary)` }}
+        className="w-16 h-16 border-4 rounded-full border-t-transparent animate-spin"
+        style={{
+          borderColor: `var(--secondary) transparent var(--secondary) var(--secondary)`,
+        }}
       ></div>
     </div>
 
@@ -36,11 +49,8 @@ const FullPageLoader = () => (
     >
       Loading...
     </p>
-
   </div>
 );
-
-
 
 const SectionLoader = () => (
   <div className="flex items-center justify-center py-20">
@@ -54,7 +64,6 @@ const App = () => {
   useEffect(() => {
     setLoading(false);
   }, []);
-
 
   return (
     <>
