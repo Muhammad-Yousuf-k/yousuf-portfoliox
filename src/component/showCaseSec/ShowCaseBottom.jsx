@@ -1,0 +1,312 @@
+import React, { useState } from 'react'
+import images from '../../assets/scripts/renderImage';
+
+const showCaseBottom = ({ currentView }) => {
+
+    const [projectData, setProjectData] = useState([
+        {
+            img: images.snakeGame,
+            ProjName: "Snake Game",
+            ProjStatus: "complete",
+            ProjDescription: "Developed a classic Snake game using HTML, CSS, and JavaScript, focusing on interactive gameplay, responsive design, and smooth user experience.",
+            gitlink: "https://github.com/Muhammad-Yousuf-k/SnakeGame",
+            projlink: "https://muhammad-yousuf-k.github.io/SnakeGame/",
+            ProjStack: ["HTML", "CSS", "JS"],
+        },
+        {
+            img: images.tikTakTacGame,
+            ProjName: "Tik Tak Toc",
+            ProjStatus: "complete",
+            ProjDescription: "Developed a classic Tik Tak Toc game using HTML, CSS, and JavaScript, focusing on interactive gameplay, responsive design, and smooth user experience.",
+            gitlink: "https://github.com/Muhammad-Yousuf-k/Tik-Tak-Toc",
+            projlink: "https://muhammad-yousuf-k.github.io/Tik-Tak-Toc/",
+            ProjStack: ["HTML", "CSS", "JS"],
+        },
+        {
+            img: images.portfolio,
+            ProjName: "Protfolio",
+            ProjStatus: "complete",
+            ProjDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem amet sunt non vero temporibus molestias.",
+            gitlink: "https://github.com/Muhammad-Yousuf-k/Yousuf-Portfolio",
+            projlink: "https://muhammad-yousuf-k.github.io/Yousuf-Portfolio/",
+            ProjStack: ["HTML", "CSS", "JS"],
+        },
+        {
+            img: images.imageCom,
+            ProjName: "Image Compressor app",
+            ProjStatus: "complete",
+            ProjDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem amet sunt non vero temporibus molestias.",
+            gitlink: "https://github.com/Muhammad-Yousuf-k/image_compressing-tool-react",
+            projlink: "https://muhammad-yousuf-k.github.io/image_compressing-tool-react/",
+            ProjStack: ["MongoDB", "Express", "React", "Node"],
+        },
+        {
+            img: images.imageCom,
+            ProjName: "Expense Tracker app",
+            ProjStatus: "complete",
+            ProjDescription: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem amet sunt non vero temporibus molestias.",
+            gitlink: "https://github.com/Muhammad-Yousuf-k/ExpensePro",
+            projlink: "none",
+            ProjStack: ["MongoDB", "Express", "Ejs", "Node"],
+        },
+    ])
+    const [certificateData, setCertificateData] = useState([
+        {
+            status: "Completed",
+            instituteName: "Capital Institute",
+            degreeName: "Matrix",
+            startDate: "2022",
+            endDate: "2023",
+        },
+        {
+            status: "Completed",
+            instituteName: "Capital Institute",
+            degreeName: "C.I.T",
+            startDate: "2023",
+            endDate: "2023",
+        },
+        {
+            status: "Contines",
+            instituteName: "Capital Institute",
+            degreeName: "D.A.E Software Engineer",
+            startDate: "2024",
+            endDate: "Contines",
+        },
+    ])
+    const [techStackFrontendData, setTechStackFrontendData] = useState([
+        {
+            name: "HTML",
+            logo: "M128 96L162.9 491.8L319.5 544L477.1 491.8L512 96L128 96zM436.2 223.9L252.4 223.9L256.5 273.3L432.1 273.3L418.5 421.7L320.6 448.7L320.6 449L319.5 449L220.8 421.7L214.8 345.9L262.5 345.9L266 384L319.5 398.5L373.2 384L379.2 321.8L212.3 321.8L199.5 176.2L440.6 176.2L436.2 223.9z",
+            level: "Expert",
+            prograss: "90%"
+        },
+        {
+            name: "CSS",
+            logo: "M128 96L162.9 491.8L320 544L477.1 491.8L512 96L128 96zM441.1 176L436.3 223.3L321 272.6L320.7 272.7L432.2 272.7L419.4 419.3L321.2 448L222.4 418.8L216 344.9L264.9 344.9L268.1 383.2L320.7 396.5L375.4 381.1L379.1 319.5L212.8 319L212.8 318.9L212.6 319L209 272.7L321.1 226L327.6 223.3L204.7 223.3L198.9 176L441.1 176z",
+            level: "Expert",
+            prograss: "90%"
+        },
+        {
+            name: "JavaScript",
+            logo: "M544 160C544 124.7 515.3 96 480 96L160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160zM276.9 508.9C243.2 508.9 223.7 491.5 213.7 470.4L248 449.7C254.6 461.4 260.6 471.3 275.1 471.3C288.9 471.3 297.7 465.9 297.7 444.8L297.7 301.7L339.8 301.7L339.8 445.4C339.8 489 314.2 508.9 276.9 508.9zM362.7 465.9L397 446.1C406 460.8 417.8 471.7 438.5 471.7C455.9 471.7 467.1 463 467.1 450.9C467.1 436.5 455.7 431.4 436.4 422.9L425.9 418.4C395.5 405.5 375.4 389.2 375.4 354.9C375.4 323.3 399.5 299.3 437 299.3C463.8 299.3 483 308.6 496.8 333L464 354C456.8 341.1 449 336 436.9 336C424.6 336 416.8 343.8 416.8 354C416.8 366.6 424.6 371.7 442.7 379.6L453.2 384.1C489 399.4 509.1 415.1 509.1 450.3C509.1 488.1 479.3 508.9 439.4 508.9C400.3 508.9 375 490.3 362.7 465.9z",
+            level: "Expert",
+            prograss: "90%"
+        },
+        {
+            name: "ReactJS",
+            logo: "M482.2 241.2C476.8 239.4 471.4 237.7 466 236.1C466.9 232.4 467.7 228.7 468.5 225C480.8 165.4 472.7 117.5 445.4 101.7C419.1 86.6 376.2 102.3 332.8 140.1C328.5 143.8 324.3 147.7 320.3 151.6C317.6 149 314.8 146.4 312 143.9C266.5 103.5 220.9 86.5 193.6 102.4C167.4 117.6 159.6 162.7 170.6 219.1C171.7 224.7 172.9 230.2 174.3 235.8C167.9 237.6 161.6 239.6 155.7 241.7C102.3 260.2 64 289.4 64 319.6C64 350.8 104.8 382.1 160.3 401.1C164.8 402.6 169.3 404.1 173.9 405.4C172.4 411.4 171.1 417.3 169.9 423.4C159.4 478.9 167.6 522.9 193.8 538C220.8 553.6 266.2 537.6 310.4 498.9C313.9 495.8 317.4 492.6 320.9 489.2C325.3 493.5 329.9 497.6 334.5 501.6C377.3 538.4 419.6 553.3 445.7 538.2C472.7 522.6 481.5 475.3 470.1 417.7C469.2 413.3 468.2 408.8 467.1 404.2C470.3 403.3 473.4 402.3 476.5 401.3C534.2 382.2 576 351.3 576 319.6C576 289.3 536.6 259.9 482.2 241.2zM346.9 156.3C384.1 123.9 418.8 111.2 434.6 120.3C451.5 130 458 169.2 447.4 220.7C446.7 224.1 446 227.4 445.1 230.7C422.9 225.7 400.4 222.1 377.8 220.1C364.8 201.5 350.6 183.7 335.2 167C339.1 163.3 342.9 159.8 346.9 156.3zM231.2 371.5C236.3 380.2 241.5 388.9 247 397.4C231.4 395.7 215.9 393.2 200.6 389.9C205 375.5 210.5 360.6 216.9 345.4C221.5 354.2 226.2 362.9 231.2 371.5zM200.9 251.2C215.3 248 230.6 245.4 246.5 243.4C241.2 251.7 236 260.2 231.1 268.8C226.2 277.3 221.4 286 216.9 294.8C210.6 279.9 205.3 265.3 200.9 251.2zM228.3 320.1C234.9 306.3 242.1 292.8 249.7 279.5C257.3 266.2 265.5 253.3 274.1 240.6C289.1 239.5 304.4 238.9 320 238.9C335.6 238.9 351 239.5 365.9 240.6C374.4 253.2 382.5 266.1 390.2 279.3C397.9 292.5 405.1 306 411.9 319.7C405.2 333.5 398 347.1 390.3 360.5C382.7 373.8 374.6 386.7 366.1 399.5C351.2 400.6 335.7 401.1 320 401.1C304.3 401.1 289.1 400.6 274.4 399.7C265.7 387 257.5 374 249.8 360.7C242.1 347.4 235 333.9 228.3 320.1zM408.9 371.3C414 362.5 418.8 353.6 423.5 344.6C429.9 359.1 435.5 373.8 440.4 388.9C424.9 392.4 409.2 395.1 393.4 396.9C398.8 388.5 403.9 379.9 408.9 371.3zM423.3 294.8C418.6 286 413.8 277.2 408.8 268.6C403.9 260.1 398.8 251.7 393.5 243.4C409.6 245.4 425 248.1 439.4 251.4C434.8 266.2 429.4 280.6 423.3 294.8zM320.2 182.3C330.7 193.7 340.6 205.7 349.8 218.1C330 217.2 310.1 217.2 290.3 218.1C300.1 205.2 310.2 193.2 320.2 182.3zM204.2 121C221 111.2 258.3 125.2 297.6 160C300.1 162.2 302.6 164.6 305.2 167C289.7 183.7 275.4 201.5 262.3 220.1C239.7 222.1 217.3 225.6 195.1 230.5C193.8 225.4 192.7 220.2 191.6 215C182.2 166.6 188.4 130.1 204.2 121zM179.7 384.6C175.5 383.4 171.4 382.1 167.3 380.7C146 374 121.8 363.4 104.3 349.5C94.2 342.5 87.4 331.7 85.5 319.6C85.5 301.3 117.1 277.9 162.7 262C168.4 260 174.2 258.2 180 256.5C186.8 278.2 195 299.5 204.5 320.1C194.9 341 186.6 362.6 179.7 384.6zM296.3 482.6C279.8 497.7 260.7 509.7 239.9 517.9C228.8 523.2 216 523.7 204.6 519.2C188.7 510 182.1 474.7 191.1 427.2C192.2 421.6 193.4 416 194.8 410.5C217.2 415.3 239.8 418.6 262.7 420.3C275.9 439 290.4 456.9 305.9 473.7C302.7 476.8 299.5 479.8 296.3 482.6zM320.8 458.3C310.6 447.3 300.4 435.1 290.5 422C300.1 422.4 310 422.6 320 422.6C330.3 422.6 340.4 422.4 350.4 421.9C341.2 434.6 331.3 446.7 320.8 458.3zM451.5 488.3C450.6 500.5 444.6 511.9 435 519.6C419.1 528.8 385.2 516.8 348.6 485.4C344.4 481.8 340.2 477.9 335.9 473.9C351.2 457 365.3 439.1 378.1 420.3C401 418.4 423.8 414.9 446.3 409.8C447.3 413.9 448.2 418 449 422C453.9 443.6 454.7 466.1 451.5 488.3zM469.7 380.8C466.9 381.7 464.1 382.6 461.2 383.4C454.2 361.6 445.6 340.3 435.7 319.6C445.3 299.2 453.4 278.2 460.2 256.7C465.4 258.2 470.4 259.8 475.2 261.4C521.8 277.4 554.5 301.2 554.5 319.4C554.5 339 519.6 364.3 469.7 380.8zM320 365.8C345.3 365.8 365.8 345.3 365.8 320C365.8 294.7 345.3 274.2 320 274.2C294.7 274.2 274.2 294.7 274.2 320C274.2 345.3 294.7 365.8 320 365.8z",
+            level: "Intermidiate",
+            prograss: "70%"
+        },
+    ])
+    const [techStackBackendData, setTechStackBackendData] = useState([
+        {
+            name: "MongoDB",
+            logo: "M544 269.8C529.2 279.6 512.2 287.5 494.5 293.8C447.5 310.6 385.8 320 320 320C254.2 320 192.4 310.5 145.5 293.8C127.9 287.5 110.8 279.6 96 269.8L96 352C96 396.2 196.3 432 320 432C443.7 432 544 396.2 544 352L544 269.8zM544 192L544 144C544 99.8 443.7 64 320 64C196.3 64 96 99.8 96 144L96 192C96 236.2 196.3 272 320 272C443.7 272 544 236.2 544 192zM494.5 453.8C447.6 470.5 385.9 480 320 480C254.1 480 192.4 470.5 145.5 453.8C127.9 447.5 110.8 439.6 96 429.8L96 496C96 540.2 196.3 576 320 576C443.7 576 544 540.2 544 496L544 429.8C529.2 439.6 512.2 447.5 494.5 453.8z",
+            level: "Expert",
+            prograss: "90%"
+        },
+        {
+            name: "NodeJS",
+            logo: "M316.3 516C314.2 516 312.1 515.4 310.2 514.4L291 503C288.1 501.4 289.5 500.8 290.5 500.5C294.3 499.2 295.1 498.9 299.2 496.5C299.6 496.3 300.2 496.4 300.6 496.6L315.4 505.4C315.9 505.7 316.7 505.7 317.2 505.4L375 472C375.5 471.7 375.9 471.1 375.9 470.4L375.9 403.7C375.9 403 375.6 402.4 375 402.1L317.2 368.8C316.7 368.5 316 368.5 315.4 368.8L257.6 402.1C257 402.4 256.7 403.1 256.7 403.7L256.7 470.4C256.7 471 257.1 471.6 257.6 471.9L273.4 481C282 485.3 287.3 480.2 287.3 475.2L287.3 409.3C287.3 408.4 288 407.6 289 407.6L296.3 407.6C297.2 407.6 298 408.3 298 409.3L298 475.2C298 486.7 291.8 493.2 280.9 493.2C277.6 493.2 274.9 493.2 267.6 489.6L252.4 480.9C248.7 478.7 246.3 474.7 246.3 470.4L246.3 403.7C246.3 399.4 248.6 395.3 252.4 393.2L310.2 359.8C313.9 357.7 318.7 357.7 322.3 359.8L380.1 393.2C383.8 395.4 386.2 399.4 386.2 403.7L386.2 470.4C386.2 474.7 383.9 478.8 380.1 480.9L322.3 514.3C320.6 515.4 318.5 516 316.3 516zM363 450.2C363 437.7 354.6 434.4 336.8 432C318.8 429.6 317 428.4 317 424.2C317 420.7 318.5 416.1 331.8 416.1C343.7 416.1 348.1 418.7 349.9 426.7C350.1 427.5 350.7 428 351.5 428L359 428C359.5 428 359.9 427.8 360.2 427.5C360.5 427.1 360.7 426.7 360.6 426.2C359.4 412.4 350.3 406 331.8 406C315.3 406 305.5 413 305.5 424.6C305.5 437.3 315.3 440.7 331.1 442.3C350 444.2 351.5 446.9 351.5 450.6C351.5 457.1 346.3 459.8 334.1 459.8C318.8 459.8 315.4 456 314.3 448.4C314.2 447.6 313.5 447 312.6 447L305.1 447C304.2 447 303.4 447.7 303.4 448.7C303.4 458.4 308.7 470 334 470C352.5 470 363 462.8 363 450.2zM417.5 400.1C417.5 406.2 412.5 411.2 406.4 411.2C400.3 411.2 395.3 406.2 395.3 400.1C395.3 393.8 400.5 389 406.4 389C412.4 388.9 417.5 393.8 417.5 400.1zM415.7 400.1C415.7 394.9 411.5 390.8 406.3 390.8C401.2 390.8 397 394.9 397 400.1C397 405.3 401.2 409.5 406.3 409.5C411.5 409.4 415.7 405.2 415.7 400.1zM411.2 406.3L408.6 406.3C408.5 405.7 408.1 402.5 408.1 402.4C407.9 401.7 407.7 401.3 406.8 401.3L404.6 401.3L404.6 406.3L402.2 406.3L402.2 393.8L406.5 393.8C408 393.8 410.9 393.8 410.9 397.1C410.9 399.4 409.4 399.9 408.5 400.2C410.2 400.3 410.3 401.4 410.6 403C410.7 404 410.9 405.7 411.2 406.3zM408.4 397.5C408.4 395.8 407.2 395.8 406.6 395.8L404.6 395.8L404.6 399.3L406.5 399.3C408.1 399.3 408.4 398.2 408.4 397.5zM137.3 255C137.3 252.3 135.9 249.9 133.6 248.6L72.3 213.3C71.3 212.7 70.1 212.4 68.9 212.3L68.3 212.3C67.1 212.3 66 212.7 64.9 213.3L3.7 248.6C1.4 249.9 0 252.4 0 255L.1 350C.1 351.3 .8 352.5 1.9 353.2C3 353.9 4.4 353.9 5.6 353.2L42 332.3C44.3 330.9 45.7 328.5 45.7 325.9L45.7 281.5C45.7 278.9 47.1 276.4 49.4 275.1L64.9 266.2C66.1 265.5 67.3 265.2 68.6 265.2C69.9 265.2 71.2 265.5 72.3 266.2L87.8 275.1C90.1 276.4 91.5 278.9 91.5 281.5L91.5 325.9C91.5 328.5 92.9 331 95.2 332.3L131.6 353.2C132.7 353.9 134.2 353.9 135.3 353.2C136.4 352.6 137.1 351.3 137.1 350L137.3 255zM472.5 151.3L472.5 327.7C472.5 330.3 471.1 332.8 468.8 334.1L407.5 369.5C405.2 370.8 402.4 370.8 400.1 369.5L338.8 334.1C336.5 332.8 335.1 330.3 335.1 327.7L335.1 256.9C335.1 254.3 336.5 251.8 338.8 250.5L400.1 215.1C402.4 213.8 405.2 213.8 407.5 215.1L422.8 223.9C424.5 224.9 426.7 223.6 426.7 221.7L426.7 127.7C426.7 124.9 429.7 123.1 432.2 124.5L468.7 144.9C471 146.1 472.5 148.6 472.5 151.3zM426.5 280.2C426.5 279.5 426.1 278.9 425.6 278.6L404.6 266.4C404 266.1 403.3 266.1 402.7 266.4L381.7 278.6C381.1 278.9 380.8 279.5 380.8 280.2L380.8 304.5C380.8 305.2 381.2 305.8 381.7 306.1L402.7 318.2C403.3 318.5 404 318.5 404.5 318.2L425.5 306.1C426.1 305.8 426.4 305.2 426.4 304.5L426.4 280.2L426.5 280.2zM636.3 279.5C638.6 278.2 640 275.7 640 273.1L640 256C640 253.4 638.6 250.9 636.3 249.6L575.4 214.2C573.1 212.9 570.3 212.9 568 214.2L506.7 249.6C504.4 250.9 503 253.4 503 256L503 326.8C503 329.5 504.4 331.9 506.7 333.2L567.6 367.9C569.8 369.2 572.6 369.2 574.9 367.9L611.7 347.4C614.2 346 614.2 342.4 611.7 341L550 305.6C548.8 304.9 548.1 303.7 548.1 302.4L548.1 280.2C548.1 278.9 548.8 277.7 550 277L569.2 265.9C570.3 265.2 571.8 265.2 572.9 265.9L592.1 277C593.2 277.7 594 278.9 594 280.2L594 297.6C594 300.4 597.1 302.2 599.6 300.8L636.3 279.5zM559 283C558.6 283.3 558.3 283.7 558.3 284.2L558.3 297.8C558.3 298.3 558.6 298.8 559 299L570.8 305.8C571.2 306.1 571.8 306.1 572.2 305.8L584 299C584.4 298.7 584.7 298.3 584.7 297.8L584.7 284.2C584.7 283.7 584.4 283.2 584 283L572.2 276.2C571.8 275.9 571.2 275.9 570.8 276.2L559 283zM304.8 326.5L304.8 256.1C304.8 253.5 303.2 251 300.9 249.7L239.8 214.5C237.7 213.3 234.8 213.1 232.4 214.5L171.3 249.7C169 251 167.4 253.4 167.4 256.1L167.4 326.5C167.4 329.3 169.3 331.7 171.4 332.9L232.6 368.1C235 369.5 237.8 369.4 240 368.1L301 332.9C302.8 331.9 304.1 330.2 304.6 328.2C304.7 327.7 304.8 327.1 304.8 326.5zM230.5 201.6L229.7 202.1L230.8 202.1L230.5 201.6zM306.7 331.8L306.3 331.1L306.3 332L306.7 331.8z",
+            level: "Expert",
+            prograss: "90%"
+        },
+        {
+            name: "ExpressJS",
+            logo: "M320.5 572C313.8 572 307 570.2 301.1 566.8L239.4 530.3C230.2 525.1 234.7 523.3 237.7 522.3C250 518 252.5 517.1 265.6 509.6C267 508.8 268.8 509.1 270.2 510L317.6 538.1C319.3 539.1 321.7 539.1 323.3 538.1L508 431.5C509.7 430.5 510.8 428.5 510.8 426.5L510.8 213.3C510.8 211.2 509.7 209.3 507.9 208.2L323.3 101.7C321.6 100.7 319.3 100.7 317.6 101.7L133.1 208.3C131.3 209.3 130.2 211.3 130.2 213.4L130.2 426.5C130.2 428.5 131.3 430.5 133.1 431.4L183.7 460.6C211.2 474.3 228 458.2 228 441.9L228 231.5C228 228.5 230.4 226.2 233.4 226.2L256.8 226.2C259.7 226.2 262.2 228.5 262.2 231.5L262.2 442C262.2 478.6 242.2 499.6 207.5 499.6C196.8 499.6 188.4 499.6 165 488L116.6 460.1C104.6 453.2 97.2 440.3 97.2 426.4L97.2 213.3C97.2 199.5 104.6 186.5 116.6 179.6L301.1 73C312.8 66.4 328.3 66.4 339.9 73L524.6 179.7C536.6 186.6 544 199.5 544 213.4L544 426.5C544 440.3 536.6 453.2 524.6 460.2L339.9 566.8C334 570.2 327.3 572 320.5 572zM469.6 361.9C469.6 322 442.6 311.4 385.9 303.9C328.5 296.3 322.7 292.4 322.7 279C322.7 267.9 327.6 253.1 370.1 253.1C408 253.1 422 261.3 427.8 286.9C428.3 289.3 430.5 291.1 433 291.1L457 291.1C458.5 291.1 459.9 290.5 460.9 289.4C461.9 288.3 462.4 286.8 462.3 285.3C458.6 241.2 429.3 220.7 370.1 220.7C317.4 220.7 286 242.9 286 280.2C286 320.6 317.3 331.8 367.8 336.8C428.3 342.7 433 351.6 433 363.5C433 384.1 416.4 392.9 377.5 392.9C328.6 392.9 317.9 380.6 314.3 356.3C313.9 353.7 311.7 351.8 309 351.8L285.1 351.8C282.1 351.8 279.8 354.2 279.8 357.1C279.8 388.2 296.7 425.3 377.6 425.3C436 425.2 469.6 402.1 469.6 361.9z",
+            level: "Expert",
+            prograss: "90%"
+        },
+        {
+            name: "Python",
+            logo: "M535.8 264.5C528.1 233.6 513.5 210.3 482.4 210.3L442.3 210.3L442.3 257.7C442.3 294.5 411.1 325.5 375.5 325.5L268.7 325.5C239.5 325.5 215.3 350.5 215.3 379.8L215.3 481.6C215.3 510.6 240.5 527.6 268.7 535.9C302.5 545.8 335 547.6 375.5 535.9C402.4 528.1 428.9 512.4 428.9 481.6L428.9 440.9L322.2 440.9L322.2 427.3L482.4 427.3C513.5 427.3 525 405.6 535.8 373.1C547 339.6 546.5 307.4 535.8 264.5zM382.2 508.7C374.6 509.2 367.3 505.5 363.3 499C359.4 492.4 359.4 484.3 363.3 477.7C367.3 471.2 374.6 467.5 382.2 468C389.8 467.5 397.1 471.2 401.1 477.7C405 484.3 405 492.4 401.1 499C397.1 505.5 389.8 509.2 382.2 508.7zM263.8 312.1L370.6 312.1C400.3 312.1 424 287.6 424 257.8L424 155.9C424 126.9 399.6 105.2 370.6 100.3C334.8 94.4 295.9 94.7 263.8 100.4C218.6 108.4 210.4 125.1 210.4 156L210.4 196.7L317.3 196.7L317.3 210.3L170.3 210.3C139.2 210.3 112 229 103.5 264.5C93.7 305.2 93.3 330.6 103.5 373.1C111.1 404.7 129.2 427.3 160.3 427.3L197 427.3L197 378.5C197 343.2 227.5 312.1 263.8 312.1zM257.2 128.7C268.5 128.7 277.6 137.8 277.6 149.1C277.6 160.4 268.5 169.5 257.2 169.5C245.9 169.5 236.8 160.4 236.8 149.1C236.8 137.8 245.9 128.7 257.2 128.7z",
+            level: "Intermidiate",
+            prograss: "70%"
+        },
+    ])
+    const [techStackOtherData, setTechStackOtherData] = useState([
+        {
+            name: "Wordpress",
+            logo: "M125.7 233.4L227.2 511.4C156.2 477 107.3 404.2 107.3 320C107.3 289.1 113.9 259.9 125.7 233.4zM463.6 309.3C463.6 283 454.2 264.8 446.1 250.6C435.3 233.1 425.2 218.2 425.2 200.7C425.2 181.1 440 162.9 460.9 162.9C461.8 162.9 462.7 163 463.7 163.1C425.8 128.4 375.4 107.2 320 107.2C245.7 107.2 180.3 145.3 142.2 203.1C147.2 203.3 151.9 203.4 155.9 203.4C178.1 203.4 212.6 200.7 212.6 200.7C224.1 200 225.4 216.9 214 218.2C214 218.2 202.5 219.5 189.7 220.2L267.2 450.6L313.8 311L280.7 220.2C269.2 219.5 258.4 218.2 258.4 218.2C246.9 217.5 248.3 200 259.7 200.7C259.7 200.7 294.8 203.4 315.7 203.4C337.9 203.4 372.4 200.7 372.4 200.7C383.9 200 385.2 216.9 373.8 218.2C373.8 218.2 362.3 219.5 349.5 220.2L426.4 448.9L447.6 378C456.6 348.6 463.6 327.5 463.6 309.3zM323.7 338.6L259.9 524.1C279 529.7 299.1 532.8 320 532.8C344.8 532.8 368.5 528.5 390.6 520.7C390 519.8 389.5 518.8 389.1 517.8L323.7 338.6zM506.7 217.9C507.6 224.7 508.1 231.9 508.1 239.8C508.1 261.4 504.1 285.6 491.9 316L426.9 503.9C490.2 467 532.7 398.5 532.7 320C532.7 283 523.3 248.2 506.7 217.9zM72 320C72 183 183 72 320 72C457 72 568 183 568 320C568 457 457 568 320 568C183 568 72 457 72 320zM556.6 320C556.6 189.3 450.7 83.4 320 83.4C189.3 83.4 83.4 189.3 83.4 320C83.4 450.7 189.3 556.6 320 556.6C450.7 556.6 556.6 450.7 556.6 320z",
+            level: "Expert",
+            prograss: "90%"
+        },
+        {
+            name: "PhotoShop",
+            logo: "M512.5 74.3L291.1 222C262 241.4 243.5 272.9 240.5 307.3C302.8 320.1 351.9 369.2 364.8 431.6C399.3 428.6 430.7 410.1 450.1 381L597.7 159.5C604.4 149.4 608 137.6 608 125.4C608 91.5 580.5 64 546.6 64C534.5 64 522.6 67.6 512.5 74.3zM320 464C320 402.1 269.9 352 208 352C146.1 352 96 402.1 96 464C96 467.9 96.2 471.8 96.6 475.6C98.4 493.1 86.4 512 68.8 512L64 512C46.3 512 32 526.3 32 544C32 561.7 46.3 576 64 576L208 576C269.9 576 320 525.9 320 464z",
+            level: "Expert",
+            prograss: "90%"
+        },
+    ])
+
+
+
+
+    return (
+        <>
+
+            {currentView === "project" && (
+                <div id='proj' className=" w-[100vw]  flex justify-center overflow-hidden h-[60vh]">
+                    <div className="w-[90%] h-full p-5 overflow-y-scroll  scroll-none justify-center gap-3 flex flex-wrap">
+                        {/* card */}
+                        {projectData.map((e, idx) => {
+
+                            return <div className="showCase-FadeIn-Up w-80 sm:w-90 h-100 rounded-4xl border-gray-500 border bg-white shadow-2xl  " key={idx}>
+                                {/* card top */}
+
+                                <div className='w-full h-[40%] border rounded-4xl'>
+                                    <img className='w-full h-full object-cover rounded-4xl' src={e.img} alt="" />
+                                </div>
+                                {/* card bottom */}
+                                <div className='w-full h-[60%] p-1'>
+
+                                    <div className="w-full h-[25%]  flex items-center px-5">
+                                        <h1 className='bg-[var(--secondary)] text-white px-3 py-1 rounded-2xl flex items-center'>{e.ProjStatus}</h1>
+                                    </div>
+                                    <div className="w-full h-[55%]  flex flex-col gap-2 justify-center px-5">
+                                        <h1 className='flex text-3xl items-center justify-between'>{e.ProjName}<i className="fa-solid fa-arrow-right-long -rotate-25 hover:bg-[var(--secondary)] hover:text-white p-2 rounded-full"></i></h1>
+                                        <p className='text-xl truncate'>{e.ProjDescription}</p>
+                                    </div>
+                                    <div className="w-full  h-[20%] flex gap-2 items-center px-5">
+                                        {e.ProjStack.map((e, idx) => {
+                                            return <h2 key={idx} className='bg-gray-500 text-white px-3 py-1 rounded-2xl flex items-center'>{e}</h2>
+
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+
+                        })}
+
+                    </div>
+                </div>
+            )}
+
+            {currentView === "certificate" && (
+                <div id='certificate' className="w-screen h-[60vh]">
+                    <div className="w-full h-full p-5 overflow-y-scroll justify-center gap-3 flex flex-wrap">
+                        {/* card */}
+                        {certificateData.map((e, idx) => {
+
+                            return <div key={idx} className='showCase-FadeIn-Up w-70 h-80 rounded-2xl border p-3 shadow-2xl'>
+                                <div className="h-[50%] flex flex-col justify-start items-start gap-2 pt-[20px] border-[var(--primary)]">
+                                    <h1 className='font-bold text-3xl'>{e.degreeName}</h1>
+                                    <h2 className='text font-light text-xl'>{e.instituteName}</h2>
+                                    <h2 className='flex items-center gap-x-2'><span className='bg-gray-300 text-[13px] font-light px-2 py-[3px] rounded'>{e.startDate}</span><span className='bg-gray-300 text-[13px] font-light px-2 py-[3px] rounded'>{e.endDate}</span></h2>
+                                </div>
+                                <div className='flex justify-start items-center border-b  h-[30%]'>
+                                    <h2 className='font-bold bg-[var(--primary)] text-white px-2 py-1 rounded'>{e.status}</h2>
+                                </div>
+                                <div className="h-[20%] flex justify-center items-center">
+                                    <button className=' active:scale-95 bg-[var(--secondary)] hover:bg-[var(--primary)] text-white py-2 rounded cursor-pointer w-full'>Learn More</button>
+
+                                </div>
+                            </div>
+
+                        })}
+
+
+                    </div>
+                </div>
+            )}
+
+
+            {currentView === "techStack" && (
+                <div id='techStack' className="w-screen h-[60vh]">
+                    <div className="w-full h-full p-5 overflow-y-scroll justify-start items-center gap-4 flex flex-col lg:flex-row lg:flex-wrap lg:justify-center">
+                        {/* card */}
+
+                        <div className="left border w-[100%] lg:w-[40%] shrink-0 p-3 shadow-xl rounded">
+
+                            <div className="top py-2 w-full flex justify-center  ">
+                                <h1 className='text-5xl font-bold'>Frontend</h1>
+                            </div>
+
+                            <div className="bottom w-full flex flex-col gap-3 rounded">
+
+                                {techStackFrontendData.map((e, idx) => {
+                                    return <div key={idx} className="textBox flex items-center border rounded w-full h-[90px] px-2 ">
+                                        <svg className='w-[70px] h-[70px]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d={e.logo} /></svg>
+                                        <div className='flex flex-col justify-center w-[100%]'>
+                                            <h1 className='text-3xl font-bold'>{e.name}</h1>
+                                            <p className='text-xl'>{e.level}</p>
+                                            <div className='w-full bg-gray-400'>
+                                                <div className={`prograss h-4 rounded w-[${e.prograss}] bg-[var(--secondary)]`}></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                })}
+
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div className="left border w-[100%] lg:w-[40%] shrink-0 p-3 shadow-xl rounded">
+
+                            <div className="top py-2 w-full flex justify-center  ">
+                                <h1 className='text-5xl font-bold'>Backend</h1>
+                            </div>
+
+                            <div className="bottom w-full flex flex-col gap-3 rounded">
+
+                                {techStackBackendData.map((e, idx) => {
+                                    return <div key={idx} className="textBox flex items-center border rounded w-full h-[90px] px-2 ">
+                                        <svg className='w-[70px] h-[70px]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d={e.logo} /></svg>
+                                        <div className='flex flex-col justify-center w-[100%]'>
+                                            <h1 className='text-3xl font-bold'>{e.name}</h1>
+                                            <p className='text-xl'>{e.level}</p>
+                                            <div className='w-full bg-gray-400'>
+                                                <div className={`prograss h-4 rounded w-[${e.prograss}] bg-[var(--secondary)]`}></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                })}
+
+
+
+
+
+
+                            </div>
+                        </div>
+                        <div className="left border w-[100%] lg:w-[40%] shrink-0 p-3 shadow-xl rounded">
+
+                            <div className="top py-2 w-full flex justify-center  ">
+                                <h1 className='text-5xl font-bold'>Other</h1>
+                            </div>
+
+                            <div className="bottom w-full flex flex-col gap-3 rounded">
+
+                                {techStackOtherData.map((e, idx) => {
+                                    return <div key={idx} className="textBox flex items-center border rounded w-full h-[90px] px-2 ">
+                                        <svg className='w-[70px] h-[70px]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d={e.logo} /></svg>
+                                        <div className='flex flex-col justify-center w-[100%]'>
+                                            <h1 className='text-3xl font-bold'>{e.name}</h1>
+                                            <p className='text-xl'>{e.level}</p>
+                                            <div className='w-full bg-gray-400'>
+                                                <div className={`prograss h-4 rounded w-[${e.prograss}] bg-[var(--secondary)]`}></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                })}
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+        </>
+    )
+}
+
+export default showCaseBottom
