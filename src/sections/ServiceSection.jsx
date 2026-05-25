@@ -6,7 +6,7 @@ const ServiceSection = () => {
   const { serviceData } = useData();
 
   return (
-    <div id='service' className='flex flex-col items-center w-full gap-10 py-20'>
+    <div id='service' className='flex flex-col items-center w-full gap-10 pt-15'>
       <SectionTop001 name="Services" />
 
       <div className='flex flex-col justify-center items-center w-full gap-5'>

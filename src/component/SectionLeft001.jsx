@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import Button from "../component/Button";
 
 const SectionLeft001 = ({
   mainHead,
@@ -19,7 +20,7 @@ const SectionLeft001 = ({
         <h2 className="Hero-FadeIn-l text-[var(--textsecondary)] mb-[-20px] text-left text-[0.8em] font-bold">
           {subHead}
         </h2>
-        <h1 className="exo2 text-6xl font-bold Hero-FadeIn-l text-[var(--textprimary)] text-[3.5em]">
+        <h1 className="exo2 text-5xl sm:text-7xl font-bold Hero-FadeIn-l text-[var(--textprimary)] ">
           {mainHead}
         </h1>
       </div>
@@ -30,9 +31,7 @@ const SectionLeft001 = ({
       {/* Buttons */}
       <div className="flex gap-5 Hero-FadeIn-l">
         <a href={btn1Link}>
-          <button className="active:scale-95 bg-[var(--secondary)] hover:bg-[var(--primary)] text-[var(--textlight)] px-6 py-3 rounded text-[0.6em]">
-            {btn1}
-          </button>
+          <Button text={btn1} />
         </a>
         <a href={btn2Link} className="flex items-center">
           <button className="active:scale-95 font-bold text-[var(--textprimary)] hover:text-[var(--textsecondary)] flex items-center justify-center gap2 text-[0.6em]">

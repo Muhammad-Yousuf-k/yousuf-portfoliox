@@ -52,7 +52,7 @@ export default function ExperienceTimeline({ experiencesData }) {
     }, []);
 
     return (
-        <div className="min-h-screen px-5 py-20">
+        <div className="min-h-screen px-5 py-0">
             <div ref={timelineRef} className="relative max-w-4xl mx-auto">
                 {/* Timeline line */}
                 <div className="absolute top-0 hidden w-1 h-full -translate-x-1/2 bg-gray-300 left-1/2 md:block"></div>

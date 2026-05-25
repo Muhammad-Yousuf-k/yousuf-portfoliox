@@ -23,7 +23,7 @@ const ShowCaseBottom = ({
     <>
       {/* Projects View */}
       {currentView === "project" && (
-        <div id="proj" className="w-full flex justify-center overflow-hidden h-[60vh]">
+        <div id="proj" className="w-full flex justify-center overflow-hidden h-[90vh]">
           <div className="w-[90%] h-full p-5 overflow-y-scroll flex flex-wrap justify-center gap-3 scroll-none">
             {projectData.map((e) => (
               <ProjectCard projectData={e} />

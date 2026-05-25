@@ -7,7 +7,7 @@ const SectionContactLeft = ({ contactIcons }) => {
                 <h2 className="Hero-FadeIn-l heroSubHead text-[var(--secondary)] mb-[-20px] text-left text-[0.8em] font-bold">
                     Yousuf — MERN Stack Developer
                 </h2>
-                <h1 className="font-bold Hero-FadeIn-l heroHead text-[3.5em]">
+                <h1 className="font-bold Hero-FadeIn-l heroHead text-5xl">
                     Contact Me
                 </h1>
             </div>

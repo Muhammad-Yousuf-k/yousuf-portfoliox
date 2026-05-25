@@ -3,13 +3,13 @@ import React from 'react'
 const SectionContactRight = ({ contactIcons }) => {
     return (
         <div className="relative flex items-center w-full h-full p-5 xl:w-[45%] lg:w-1/2 md:flex text-xl">
-            <div className="w-full h-[70%] flex flex-col bg-white p-5 border border-gray-300 rounded gap-5">
+            <div className="w-full h-[70%] flex flex-col bg-white p-2 sm:p-5 border border-gray-300 rounded gap-5">
                 <h1 className="font-medium Hero-FadeIn-l heroHead text-[1.7em]">
                     Get in Touch
                 </h1>
                 <form
                     onSubmit={(e) => e.preventDefault()}
-                    className="border border-gray-300 w-full h-[85%] flex flex-col justify-center gap-10 p-5 rounded bg-[var(--light)]"
+                    className="border border-gray-300 w-full h-[85%] flex flex-col justify-center gap-10 p-2 sm:p-5 rounded bg-[var(--light)]"
                 >
                     {/* Name Input */}
                     <div>

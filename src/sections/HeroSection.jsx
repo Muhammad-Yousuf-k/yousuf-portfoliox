@@ -24,8 +24,9 @@ const HeroSection = () => {
     <div
       id="hero"
       ref={heroRef}
-      className="flex flex-col-reverse sm:flex-row gapx-10 justify-center items-center h-[1000px] sm:h-[100vh] w-full overflow-hidden"
+      className="flex flex-col-reverse sm:flex-row gapx-10 justify-center items-center h-[130vh] sm:h-[100vh] w-full overflow-hidden"
     >
+
       <SectionLeft001
         mainHead={<>MERN Stack <br /> Developer</>}
         subHead="Hi There, I'm Yousuf"

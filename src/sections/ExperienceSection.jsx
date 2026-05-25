@@ -4,11 +4,11 @@ import Timeline from '../component/Timeline'
 import useData from '../hooks/useData';
 
 const ExperienceSection = () => {
-  const { experiencesData } = useData();
-  
+    const { experiencesData } = useData();
+
 
     return (
-        <div id='service' className='flex flex-col items-center w-full gap-10 py-20'>
+        <div id='service' className='flex flex-col items-center w-full gap-10 pt-15'>
             <SectionTop001 name="Experience" />
             <Timeline experiencesData={experiencesData} />
 

@@ -25,7 +25,7 @@ const SectionTop001 = ({ name }) => {
     }, []);
 
     return (
-        <div ref={sectionRef} className="w-full h-[20vh] flex items-center justify-center">
+        <div ref={sectionRef} className="w-full h-[13vh] flex items-center justify-center">
             <div
                 ref={headingRef}
                 className="relative flex items-center justify-center text-6xl MUC-FadeIn-Up sm:text-8xl md:text-9xl"

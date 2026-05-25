@@ -1,108 +1,252 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect, useRef } from 'react'
+import Button from './Button'
 
 const menuItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About Me", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "My ShowCase", href: "#showCase" },
-  { name: "Contact me", href: "#contact" }
-];
+  { name: 'Home', href: '#hero' },
+  { name: 'About Me', href: '#about' },
+  {
+    name: 'Services',
+    href: '#services',
+  },
+  { name: 'Showcase', href: '#showCase' },
+  { name: 'Contact', href: '#contact' },
+]
+
+const ChevronIcon = ({ className }) => (
+  <svg
+    className={className}
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      d="M2 4L6 8L10 4"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
+
+const HamburgerIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+    <path
+      d="M3 6h16M3 11h16M3 16h16"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+)
+
+const CloseIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+    <path
+      d="M5 5l12 12M17 5L5 17"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+)
+
+const ServicesDropdown = ({ items }) => {
+  return (
+    <div className="absolute left-0 top-[calc(100%+8px)] min-w-[180px] overflow-hidden rounded-md bg-[var(--primary)] opacity-0 pointer-events-none translate-y-[-6px] transition-all duration-200 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0">
+      {items.map((item) => (
+        <a
+          key={item.name}
+          href={item.href}
+          className="block border-b border-white/10 px-4 py-[0.65rem] font-['Exo_2',sans-serif] text-[0.78rem] font-bold uppercase tracking-[0.05em] text-[var(--light)] no-underline transition-colors duration-150 last:border-b-0 hover:bg-[var(--secondary)] hover:text-white"
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  )
+}
+
+const MobileServicesItem = ({ item, onLinkClick }) => {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <li>
+      <button
+        type="button"
+        className="flex w-full items-center justify-between border-b border-[rgba(51,51,51,0.08)] bg-transparent py-4 font-['Exo_2',sans-serif] text-base font-bold uppercase tracking-[0.05em] text-[var(--primary)] transition-colors duration-200 hover:text-[var(--secondary)]"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
+      >
+        {item.name}
+        <ChevronIcon
+          className={`shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''
+            }`}
+        />
+      </button>
+
+      {open && (
+        <ul className="mb-1 overflow-hidden rounded bg-[rgba(51,51,51,0.04)] p-0">
+          {item.dropdown.map((sub) => (
+            <li key={sub.name}>
+              <a
+                href={sub.href}
+                className="block border-b border-[rgba(51,51,51,0.06)] px-4 py-[0.7rem] font-['Exo_2',sans-serif] text-[0.82rem] font-semibold uppercase tracking-[0.04em] text-[#505050] no-underline transition-colors duration-200 last:border-b-0 hover:bg-[rgba(255,82,82,0.05)] hover:text-[var(--secondary)]"
+                onClick={onLinkClick}
+              >
+                {sub.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  )
+}
 
 const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const drawerRef = useRef(null)
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [DropdownOpen, setDropdownOpen] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10)
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+    window.addEventListener('scroll', handleScroll, { passive: true })
 
-  const toggleDropdown = (e) => {
-    e.preventDefault(); // Prevent navigation
-    setDropdownOpen(!DropdownOpen);
-  };
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+
+    window.addEventListener('keydown', handleKey)
+
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [])
+
+  const closeMobile = () => setMobileOpen(false)
 
   return (
     <>
-      <nav className='flex sm:flex-wrap justify-around items-center px-3 py-1 lg:h-[15vh] h-[10vh] xl:h-[10vh] w-full overflowhidden bg-[var(--light)] z-50'>
-        <div className='flex justify-center'>
-          <h1 className='text-2xl sm:text-3xl font-bold text-nowrap'>Muhammad Yousuf<span className='text-[var(--secondary)] font-[900]'>.</span></h1>
-        </div>
-        <div className='hidden lg:block'>
-          <ul className='flex gap-5 font-medium items-center'>
+      <div
+        className={`sticky top-0 z-50 border-b border-[rgba(51,51,51,0.08)] bg-[var(--light)] transition-shadow duration-300 ${scrolled ? 'shadow-[0_4px_24px_rgba(51,51,51,0.07)]' : ''
+          }`}
+      >
+        <nav
+          className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between px-8"
+          aria-label="Main navigation"
+        >
+          <a
+            href="#hero"
+            className="shrink-0 font-['Exo_2',sans-serif] text-xl font-extrabold tracking-[-0.5px] text-[var(--primary)] no-underline"
+          >
+            Muhammad Yousuf
+            <span className="text-[var(--secondary)]">.</span>
+          </a>
 
-            {menuItems.map((e, idx) => {
-              return e.name === "Services" && e.dropdown ? <li key={idx} className='hover:bg-[var(--secondary)] hover:text-white group px-4 py-1 rounded relative'>
-                <a href="#service" className='flex items-center justify-center group'>Services <svg className='w-5 h-5 -rotate-90 group-hover:rotate-0 transition-transform duration-300' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M300.3 440.8C312.9 451 331.4 450.3 343.1 438.6L471.1 310.6C480.3 301.4 483 287.7 478 275.7C473 263.7 461.4 256 448.5 256L192.5 256C179.6 256 167.9 263.8 162.9 275.8C157.9 287.8 160.7 301.5 169.9 310.6L297.9 438.6L300.3 440.8z" /></svg></a>
-                <div className='bg-[var(--secondary)] absolute group-hover:block hidden'>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>Logo design</h1>
-                  </a>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>Web design</h1>
-                  </a>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>App Development</h1>
-                  </a>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>SEO</h1>
-                  </a>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>Web Development</h1>
-                  </a>
-                </div>
-              </li> : <li key={idx} className='hover:bg-[var(--secondary)] hover:text-white px-4 py-1 rounded'><a href={e.href}>{e.name}</a></li>
-            })}
+          <ul className="m-0 flex list-none items-center p-0 max-[900px]:hidden" role="list">
+            {menuItems.map((item) =>
+              item.dropdown ? (
+                <li key={item.name} className="group relative list-none">
+                  <a
+                    href={item.href}
+                    className="relative flex items-center gap-1 whitespace-nowrap px-4 py-[0.4rem] font-['Exo_2',sans-serif] text-[0.8rem] font-bold uppercase tracking-[0.05em] text-[var(--primary)] no-underline transition-colors duration-200 hover:text-[var(--secondary)]"
+                  >
+                    {item.name}
+                    <ChevronIcon className="transition-transform duration-200 group-hover:rotate-180" />
 
-            <li className='px-4 py-1'><a href="#contact"><button className='bg-[var(--secondary)] hover:bg-[var(--primary)] active:scale-95 text-[var(--light)] text-1xl px-6 py-3 rounded'>Hire Me</button></a></li>
-          </ul>
-        </div>
-
-        <li className='px-4 py-1 list-none lg:hidden'><button onClick={toggleMobileMenu} className='active:scale-95 text-black text-2xl px-6 py-3'><svg className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z" /></svg></button></li>
-      </nav>
-
-
-      {mobileMenuOpen && (
-        <div id='pMenu' className="fixed z-40 w-full h-[100vh] bg-[var(--light)]">
-          <ul className='flex flex-col gap-5 font-medium items-center'>
-            <li className='hover:bg-[var(--secondary)] hover:text-white px-4 py-1 rounded'><a href="#hero">Home</a></li>
-            <li className='hover:bg-[var(--secondary)] hover:text-white px-4 py-1 rounded'><a href="#about">About</a></li>
-            <li className='hover:bg-[var(--secondary)] hover:text-white group px-4 py-1 rounded relative'>
-              <button
-                type="button"
-                onClick={toggleDropdown}
-                className="flex items-center justify-center bg-transparent">Services</button>
-
-              {DropdownOpen && (
-                <div className='bg-[var(--secondary)] text-white absolute group-hover:block'>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>Logo design</h1>
                   </a>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>Web design</h1>
-                  </a>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>App Development</h1>
-                  </a>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>SEO</h1>
-                  </a>
-                  <a href="#service">
-                    <h1 className='text-nowrap px-2 py-1 cursor-pointer hover:bg-[var(--primary)]'>Web Development</h1>
-                  </a>
-                </div>
 
-              )}
+                  <ServicesDropdown items={item.dropdown} />
+                </li>
+              ) : (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className="relative block whitespace-nowrap px-4 py-[0.4rem] font-['Exo_2',sans-serif] text-[0.8rem] font-bold uppercase tracking-[0.05em] text-[var(--primary)] no-underline transition-colors duration-200 hover:text-[var(--secondary)] group"
+                  >
+                    {item.name}
+
+                  </a>
+                </li>
+              )
+            )}
+
+            <li >
+              <Button text="Hire Me" />
             </li>
-            <li className='hover:bg-[var(--secondary)] hover:text-white px-4 py-1 rounded'><a href="#showCase">My ShowCase</a></li>
-            <li className='hover:bg-[var(--secondary)] hover:text-white px-4 py-1 rounded'><a href="#testimonial">Testimonials</a></li>
-            <li className='hover:bg-[var(--secondary)] hover:text-white px-4 py-1 rounded'><a href="#contact">Contact me</a></li>
-            <li className='px-4 py-1'><a href="#contact"><button className='bg-[var(--secondary)] hover:bg-[var(--primary)] active:scale-95 text-[var(--light)] text-1xl px-6 py-3 rounded'>Hire Me</button></a></li>
           </ul>
-        </div>
-      )}
 
+          <button
+            type="button"
+            className="hidden h-10 w-10 cursor-pointer items-center justify-center rounded border-0 bg-transparent p-0 text-[var(--primary)] transition-colors duration-200 hover:bg-[rgba(51,51,51,0.06)] max-[900px]:flex"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-drawer"
+          >
+            {mobileOpen ? <CloseIcon /> : <HamburgerIcon />}
+          </button>
+        </nav>
+      </div>
+
+      <div
+        className={`fixed inset-0 top-[68px] z-[39] bg-[rgba(51,51,51,0.25)] backdrop-blur-[2px] min-[901px]:hidden ${mobileOpen ? 'block' : 'hidden'
+          }`}
+        onClick={closeMobile}
+        aria-hidden="true"
+      />
+
+      <div
+        id="mobile-drawer"
+        ref={drawerRef}
+        className={`fixed bottom-0 left-0 right-0 top-[68px] z-40 flex flex-col overflow-y-auto border-t border-[rgba(51,51,51,0.08)] bg-[var(--light)] px-7 pb-8 pt-6 transition-transform duration-300 ease-in-out min-[901px]:hidden ${mobileOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        aria-hidden={!mobileOpen}
+      >
+        <ul className="m-0 flex flex-1 list-none flex-col p-0" role="list">
+          {menuItems.map((item) =>
+            item.dropdown ? (
+              <MobileServicesItem
+                key={item.name}
+                item={item}
+                onLinkClick={closeMobile}
+              />
+            ) : (
+              <li key={item.name}>
+                <a
+                  href={item.href}
+                  className="flex items-center justify-between border-b border-[rgba(51,51,51,0.08)] py-4 font-['Exo_2',sans-serif] text-base font-bold uppercase tracking-[0.05em] text-[var(--primary)] no-underline transition-colors duration-200 hover:text-[var(--secondary)]"
+                  onClick={closeMobile}
+                >
+                  {item.name}
+                </a>
+              </li>
+            )
+          )}
+        </ul>
+
+        <a
+          href="#contact"
+          className="mt-8 flex items-center justify-center rounded bg-[var(--secondary)] p-4 font-['Exo_2',sans-serif] text-[0.9rem] font-bold uppercase tracking-[0.08em] text-[var(--light)] no-underline transition-opacity duration-200 hover:opacity-90"
+          onClick={closeMobile}
+        >
+          Hire Me →
+        </a>
+      </div>
     </>
   )
 }

@@ -8,7 +8,7 @@ const AboutSection = () => {
   return (
     <div
       id="about"
-      className="flex flex-col-reverse md:flex-row gap-x-10 justify-center items-center h-[1000px] md:h-[100vh] w-full overflow-hidden"
+      className="mt-10 sm:mt-0 flex flex-col sm:flex-col-reverse md:flex-row gap-x-10 justify-center items-center h-[130vh] md:h-[100vh] w-full overflow-hidden"
     >
       {/* Right Image */}
       <SectionRight001

@@ -22,7 +22,7 @@ const ShowCaseSection = () => {
   ];
 
   return (
-    <div id="showCase" className="w-full overflow-hidden h-[100vh]">
+    <div id="showCase" className="w-full overflow-hidden h-[100vh] mt-15">
       {/* Top Section */}
       <SectionTop001 name="ShowCase" />
 
@@ -32,7 +32,7 @@ const ShowCaseSection = () => {
           <div
             key={view.key}
             onClick={() => setCurrentView(view.key)}
-            className="showCase-FadeIn-Ap text-xl sm:text-2xl cursor-pointer active:scale-95 text-nowrap h-[50%] rounded sm:w-1/4 flex items-center justify-center
+            className="showCase-FadeIn-Ap text-[12px] sm:text-2xl px-4 cursor-pointer active:scale-95 text-nowrap h-[50%] rounded sm:w-1/4 flex items-center justify-center
                        bg-[var(--secondary)] hover:bg-[var(--primary)] text-[var(--light)]"
           >
             {view.label}
